@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: digital_board.digital_board.DigitalBoardApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 38.954 s - in digital_board.digital_board.DigitalBoardApplicationTests

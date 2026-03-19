@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="trace">
+    <Appenders>
+        <Console name="ConsoleOutput" target="SYSTEM_OUT">
+            <PatternLayout pattern="%style{%d{ISO8601}}{blue} %highlight{%-5level} [%style{%t}{bright,yellow}] : %style{%msg}{cyan}%n%throwable" disableAnsi="false" />
+        </Console>
+        <File name="File" fileName="application.log">
+            <PatternLayout pattern="%d %p %c{1.} [%t] %m%n"/>
+        </File>
+        <JDBC name="dbLogsStore" tableName="event_logs">
+            <DriverManager connectionString="jdbc:postgresql://ldpg-clo3cof5felc73a1nong-a.oregon-postgres.render.com/digital_board" driverClassName="org.postgresql.Driver" username="digital_board_user" password="mibjZBLOiXsEXSUi4pr8iP4MVBDQbLn6" />
+            <Column name="eventdate" isEventTimestamp="true" />
+            <Column name="level" pattern="%level" isUnicode="false" />
+            <Column name="logger" pattern="%logger{36}" isUnicode="false"/>
+            <Column name="useremail" pattern="%X{useremail}" isUnicode="false" />
+            <Column name="path" pattern="%X{path}" isUnicode="false"/>
+            <Column name="message" pattern="%message" isUnicode="false" />
+            <Column name="exception" pattern="%exception" isUnicode="false" />
+            <Filters>
+                <ThresholdFilter level="warn" onMatch="DENY" onMismatch="NEUTRAL" />
+                <RegexFilter regex="Start.*" onMatch="DENY" onMismatch="NEUTRAL" />
+                <RegexFilter regex="End.*" onMatch="DENY" onMismatch="NEUTRAL" />
+                <RegexFilter regex="Start User Controller.*" onMatch="DENY" onMismatch="NEUTRAL" />
+                <RegexFilter regex="Starting DigitalBoardApplication.*" onMatch="DENY" onMismatch="NEUTRAL" />
+                <RegexFilter regex="Started DigitalBoardApplication.*" onMatch="DENY" onMismatch="NEUTRAL" />
+                <RegexFilter regex="No active profile set.*" onMatch="DENY" onMismatch="NEUTRAL" />
+            </Filters>
+        </JDBC>
+    </Appenders>
+    <Loggers>
+        <Logger name="digital_board.digital_board" level="info" additivity="false">
+            <AppenderRef ref="dbLogsStore" />
+            <appender-ref ref="ConsoleOutput" />
+        </Logger>
+
+        <Root level="info" additivity="false">
+            <AppenderRef ref="ConsoleOutput"/>
+            <AppenderRef ref="File"/>
+        </Root>
+    </Loggers>
+</Configuration>
+

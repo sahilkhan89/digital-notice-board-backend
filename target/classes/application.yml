@@ -1,0 +1,54 @@
+
+
+# com.auth0.domain: dev-11fo0ea2adho6vqb.us.auth0.com
+# com.auth0.clientId: SQ6iT4W1K8p4QYiXd484d9bCRdGEGTdX
+# com.auth0.clientSecret: baKE4CV4_hXBGDfw2DaEQWkCJ_JskRhEo5a3kLRtWz3ER5w5C2lv01zCGZ9Ig43J
+cloudinary:
+  cloud-name: dkbdo9top
+  api-key: 465288312492294
+  api-secret: 8HfiX-QJgKg0SytpxMtuu5t5irE
+
+server:
+  port: 9595
+
+spring:
+  datasource:
+   # url: jdbc:postgresql://dpg-cpt5ckuehbks73eueu4g-a.oregon-postgres.render.com/digitalboard_db2
+   # username: digitalboard_db2_user
+   # password: svP6jJCXymkNrsJEkife5DpAoR8H3akU
+   # driver-class-name: org.postgresql.Driver
+   url: jdbc:mysql://localhost:3307/digital_board
+   username: root
+   password: root
+    
+   
+
+
+    
+   driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    
+    
+
+  security:
+    oauth2:
+      client:
+        registration:
+          auth0:
+            client-id: UkrepWEIKkn2CIYLmGIiuU2fdwU34WdH
+            client-secret: K1PDdEqQiWsbq5spsZNGKeYkHr6VTwCaBTWpo-RBLJXsD1L6d2W_OlryBd-c50Rw
+            scope:
+              - openid
+              - profile
+              - email
+        provider:
+          auth0:
+            issuer-uri: https://dev-2v6nqrql62h5dwnv.us.auth0.com/
+
+
+  
+# # spring.jpa.hibernate.ddl-auto=update
+# # spring.jpa.properties.hibernate.dialect =org.hibernate.dialect.MySQL8Dialect
