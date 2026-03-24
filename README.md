@@ -123,8 +123,3 @@ Controllers currently present:
 
 Use Swagger UI to inspect endpoint paths, payloads, and response models.
 
-## Security and Configuration Notes
-
-- Do not commit live credentials (DB, OAuth, Cloudinary, mail) to source control.
-- Keep generated build output under target/ ignored.
-- Prefer profile-based config for dev, staging, and production environments.
