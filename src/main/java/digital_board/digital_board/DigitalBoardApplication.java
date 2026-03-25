@@ -40,7 +40,7 @@ public class DigitalBoardApplication implements CommandLineRunner {
         String specificMessage = ResponseMessagesConstants.messagelist.stream()
                 .filter(exceptionResponse -> "NOTICE_CREATE_FAILURE".equals(exceptionResponse.getExceptonName()))
                 .map(ExceptionResponse::getMassage)
-                .findFirst() 
+                .findFirst()
                 .orElse("Default message if not found");
         System.out.println("Specific Message: " + specificMessage);
         if (ResponseMessagesConstants.messagelist.isEmpty()) {
